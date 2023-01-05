@@ -15,25 +15,26 @@ class ProductListViewModel: ObservableObject {
     
     func getAllProduct() async {
         do {
-            guard let url = Constants.Urls.urlProducts else {
-                throw NetworkError.badUrl
-            }
-            let products = try await Webservice().getAllProducts(url: url)
-            self.productVM = products.map(ProductListViewModel.init)
-        
-            }
+            let products = try await Webservice().getAllProducts(url: Constants.Urls.urlProducts)
+            self.productVM = products.map(ProductViewModel.init)
         } catch {
             print(error)
         }
     }
 }
 
+
+
 struct ProductViewModel {
     
-    let product: ProductModel
+    fileprivate var product: ProductModel
     
-    var id: String {
-        product.id ?? ""
+    var id: Int {
+        product.id ?? 0
+    }
+    
+    var name: String {
+        product.name ?? ""
     }
     
     var errorDescription: String {

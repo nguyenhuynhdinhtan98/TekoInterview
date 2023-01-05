@@ -9,9 +9,20 @@ import Foundation
 
 
 struct ProductModel: Decodable {
-    var id: String?
+    var id: Int?
+    var name: String?
     var errorDescription: String?
     var sku: String?
     var image: String?
     var color: Int?
+    
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case name = "name"
+        case errorDescription = "errorDescription"
+        case sku = "sku"
+        case image = "image"
+        case color = "color"
+    }
+    
 }

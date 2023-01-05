@@ -15,14 +15,15 @@ enum NetworkError: Error {
 
 class Webservice {
     
-
-    func getAllProducts(url: URL) async throws -> [ProductModel] {
+    func getAllProducts(url: URL?) async throws -> [ProductModel] {
+        
+        guard let url = url else { return [] }
         
         let (data, _) = try await URLSession.shared.data(from: url)
         
-        let products = try? JSONDecoder().decode([ProductModel].self, from: data)
-        
-        return products ?? []
+        let products: [ProductModel] = try JSONDecoder().decode([ProductModel].self, from: data)
+
+        return products
         
     }
     
