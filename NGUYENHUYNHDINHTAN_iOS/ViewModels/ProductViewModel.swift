@@ -12,9 +12,13 @@ import SwiftUI
 @MainActor
 class ProductListViewModel: ObservableObject {
     
-    @Published var productVM: [ProductViewModel] = []
+    
     @Published var productDisplayVM: [ProductViewModel] = []
-    var colorsModels: [ColorModel] = []
+    
+    var productVM: [ProductViewModel] = []
+    
+    private var currentPage: Int = 0
+    private var pageSize: Int = 0
     
     func getAllProduct() async {
         async let colors = try await Webservice().getAllColors(url: Constants.Urls.urlColors)
@@ -22,15 +26,36 @@ class ProductListViewModel: ObservableObject {
         async let products = try await Webservice().getAllProducts(url: Constants.Urls.urlProducts)
         
         do {
-            self.colorsModels = try await colors
+            let colorModels = try await colors
             self.productVM = try await products.map({ item in
-                ProductViewModel(productModel: item, colors: colorsModels)
+                ProductViewModel(productModel: item, colors: colorModels)
             })
-            self.productDisplayVM = productVM
+            pageSize = productVM.count
+            productDisplayVM = productVM
         } catch {
             print(error)
         }
     }
+    
+    func loadNextPage(_ item: ProductViewModel) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
+            self.page += 1
+            let moreItems = self.getMoreItems(page: self.page, pageSize: self.pageSize)
+            self.productDisplayVM.append(contentsOf: moreItems)
+        }
+    }
+    
+    private func getMoreItems(page: Int,
+                              pageSize: Int) -> [ProductViewModel] {
+        let maximum = ((page * pageSize) + pageSize) - 1
+        let moreItems: [ProductViewModel] = Array(productDisplayVM.count...maximum).map {
+//            print($0)
+//            productVM[$0]
+        }
+        return moreItems
+    }
+    
+    
 }
 
 

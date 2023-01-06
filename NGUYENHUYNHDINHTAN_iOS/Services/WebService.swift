@@ -7,12 +7,6 @@
 
 import Foundation
 
-enum NetworkError: Error {
-    case badUrl
-    case decodingError
-    case badRequest
-}
-
 class Webservice {
     
     func getAllProducts(url: URL?) async throws -> [ProductModel] {

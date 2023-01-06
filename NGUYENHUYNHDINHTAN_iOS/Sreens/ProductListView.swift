@@ -9,14 +9,17 @@ import SwiftUI
 
 struct ProductListView: View {
     @StateObject private var productVM = ProductListViewModel()
-    @State private var page: Int = 0
-    private var pageSize: Int = 0
+
     
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
                 List(productVM.productDisplayVM, id: \.id) { product in
-                    ProductItemView(product: product)
+                    ProductItemView(product: product).onAppear {
+                        if product.id ==  productVM.productDisplayVM.last?.id {
+                            productVM.loadNextPage(product)
+                        }
+                    }
                 }
                 .task {
                     await productVM.getAllProduct()
@@ -33,6 +36,7 @@ struct ProductListView: View {
 
 
 struct ProductItemView: View {
+    @State private var page: Int = 0
     
     var product: ProductViewModel
     
@@ -46,13 +50,16 @@ struct ProductItemView: View {
                 Text(product.errorDescription).padding(4)
                 Text(product.sku).padding(4)
                 if product.color != .clear {
-                    Rectangle()
-                        .fill(product.color)
-                        .frame(width: 30, height: 30).padding(4)
+                    HStack {
+                        Text("Color:")
+                        Rectangle()
+                            .fill(product.color)
+                            .frame(width: 25, height: 25).padding(4)
+                    }
                 }
-                Image(systemName: "square.and.pencil") .font(.system(size: 30.0, weight: .bold)).frame(width: 30, height: 30).foregroundColor(.red)
+                Image(systemName: "square.and.pencil") .font(.system(size: 20, weight: .bold)).frame(width: 35, height: 35).foregroundColor(.red)
             }
-         
+            
         }
         .padding(5)
         .background(Color.white)
