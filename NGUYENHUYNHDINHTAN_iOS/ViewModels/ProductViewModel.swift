@@ -6,21 +6,31 @@
 //
 
 import Foundation
+import SwiftUI
 
 
 @MainActor
 class ProductListViewModel: ObservableObject {
     
     @Published var productVM: [ProductViewModel] = []
+    @Published var productDisplayVM: [ProductViewModel] = []
+    private var color: [ColorModel] = []
     
     func getAllProduct() async {
         do {
+            self.color = try await Webservice().getAllProducts(url: Constants.Urls.urlProducts)
             let products = try await Webservice().getAllProducts(url: Constants.Urls.urlProducts)
             self.productVM = products.map(ProductViewModel.init)
+            self.productDisplayVM = productVM
         } catch {
             print(error)
         }
     }
+    
+    func getAllColor() async -> [ColorModel] {
+        return try await Webservice().getAllColors(url: Constants.Urls.urlColors)
+    }
+    
 }
 
 

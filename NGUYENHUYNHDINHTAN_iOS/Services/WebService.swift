@@ -27,6 +27,18 @@ class Webservice {
         
     }
     
+    
+    func getAllColors(url: URL?) async throws -> [ColorModel] {
+        
+        guard let url = url else { return [] }
+        
+        let (data, _) = try await URLSession.shared.data(from: url)
+        
+        let colors: [ColorModel] = try JSONDecoder().decode([ColorModel].self, from: data)
+
+        return colors
+        
+    }
 
     
 }

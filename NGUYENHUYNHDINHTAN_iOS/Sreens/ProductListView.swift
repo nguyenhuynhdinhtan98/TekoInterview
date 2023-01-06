@@ -14,11 +14,18 @@ struct ProductListView: View {
     
     var body: some View {
         NavigationView {
-            List(productVM.productVM, id: \.id) { product in
-                ProductItemView(product: product)
+            VStack(alignment: .leading) {
+                List(productVM.productVM, id: \.id) { product in
+                    ProductItemView(product: product)
+                }
+                .task {
+                    await productVM.getAllProduct()
+                }
             }
-            .task {
-                await productVM.getAllProduct()
+            .navigationBarTitle(Text("Product")).toolbar {
+                Button("Submit") {
+                    
+                }
             }
         }
     }
@@ -38,7 +45,7 @@ struct ProductItemView: View {
                 Text(product.name).padding(4)
                 Text(product.errorDescription).padding(4)
                 Text(product.sku).padding(4)
-//                Text(product.color).padding(4)
+                //                Text(product.color).padding(4)
             }
         }
         .padding(5)
