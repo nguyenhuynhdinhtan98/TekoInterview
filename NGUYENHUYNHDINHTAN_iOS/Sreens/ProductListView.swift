@@ -9,16 +9,22 @@ import SwiftUI
 
 struct ProductListView: View {
     @StateObject private var productVM = ProductListViewModel()
-
+    @State private var isLoading: Bool = false
+    @State private var currentPage: Int = 0
+    private let pageSize: Int = 10
     
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
                 List(productVM.productDisplayVM, id: \.id) { product in
                     ProductItemView(product: product).onAppear {
-                        if product.id ==  productVM.productDisplayVM.last?.id {
-                            productVM.loadNextPage(product)
+                        if product.id == productVM.productDisplayVM.last?.id {
+                            loadNextPage(product)
                         }
+                    }
+                    if self.isLoading && product.id == productVM.productDisplayVM.last?.id && product.id != productVM.productVM.last?.id   {
+                        Text("Loading ...")
+                            .padding(.vertical)
                     }
                 }
                 .task {
@@ -33,6 +39,36 @@ struct ProductListView: View {
         }
     }
 }
+
+extension ProductListView {
+    func loadNextPage(_ item: ProductViewModel) {
+        self.isLoading = true
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+            self.currentPage += 1
+            let moreItems = self.getMoreItems(page: self.currentPage, pageSize: self.pageSize)
+            self.productVM.productDisplayVM.append(contentsOf: moreItems)
+            self.isLoading = false
+        }
+    }
+    
+    private func getMoreItems(page: Int,
+                              pageSize: Int) -> [ProductViewModel] {
+        let maximum =  ((page * pageSize) + pageSize) - 1
+        let nextItemIndexPage = (productVM.productVM.count - productVM.productDisplayVM.count) <= pageSize ? productVM.productVM.count - 1 : maximum
+        print("productDisplayVM.count \(productVM.productDisplayVM.count)")
+        print("pageSize \(pageSize)")
+        print("page \(page)")
+        print("maximum \(maximum)")
+        print("nextItemIndexPage \(nextItemIndexPage)")
+        let moreItems: [ProductViewModel] = Array(productVM.productDisplayVM.count...nextItemIndexPage).map {
+            print("Index \($0)")
+            return productVM.productVM[$0]
+        }
+        return moreItems
+    }
+    
+}
+
 
 
 struct ProductItemView: View {
@@ -66,7 +102,6 @@ struct ProductItemView: View {
         .cornerRadius(5)
     }
 }
-
 
 
 struct ContentView_Previews: PreviewProvider {

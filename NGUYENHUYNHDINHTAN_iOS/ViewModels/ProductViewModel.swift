@@ -16,10 +16,7 @@ class ProductListViewModel: ObservableObject {
     @Published var productDisplayVM: [ProductViewModel] = []
     
     var productVM: [ProductViewModel] = []
-    
-    private var currentPage: Int = 0
-    private var pageSize: Int = 0
-    
+
     func getAllProduct() async {
         async let colors = try await Webservice().getAllColors(url: Constants.Urls.urlColors)
         
@@ -30,36 +27,15 @@ class ProductListViewModel: ObservableObject {
             self.productVM = try await products.map({ item in
                 ProductViewModel(productModel: item, colors: colorModels)
             })
-            pageSize = productVM.count
-            productDisplayVM = productVM
+            productDisplayVM = productVM.prefix(10).map{$0}
         } catch {
             print(error)
         }
     }
-    
-    func loadNextPage(_ item: ProductViewModel) {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
-            self.page += 1
-            let moreItems = self.getMoreItems(page: self.page, pageSize: self.pageSize)
-            self.productDisplayVM.append(contentsOf: moreItems)
-        }
-    }
-    
-    private func getMoreItems(page: Int,
-                              pageSize: Int) -> [ProductViewModel] {
-        let maximum = ((page * pageSize) + pageSize) - 1
-        let moreItems: [ProductViewModel] = Array(productDisplayVM.count...maximum).map {
-//            print($0)
-//            productVM[$0]
-        }
-        return moreItems
-    }
-    
-    
 }
 
 
-struct ProductViewModel {
+struct ProductViewModel{
     
     fileprivate var productModel: ProductModel
     
