@@ -45,11 +45,14 @@ struct ProductItemView: View {
                 Text(product.name).padding(4)
                 Text(product.errorDescription).padding(4)
                 Text(product.sku).padding(4)
-                Rectangle()
-                    .fill(product.color)
-                    .frame(width: 30, height: 30).padding(4)
-                Image(systemName: "square.and.pencil") .font(.system(size: 30.0, weight: .bold)).foregroundColor(.red)
+                if product.color != .clear {
+                    Rectangle()
+                        .fill(product.color)
+                        .frame(width: 30, height: 30).padding(4)
+                }
+                Image(systemName: "square.and.pencil") .font(.system(size: 30.0, weight: .bold)).frame(width: 30, height: 30).foregroundColor(.red)
             }
+         
         }
         .padding(5)
         .background(Color.white)
