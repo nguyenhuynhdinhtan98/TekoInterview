@@ -60,7 +60,7 @@ extension ProductListView {
         print("page \(page)")
         print("maximum \(maximum)")
         print("nextItemIndexPage \(nextItemIndexPage)")
-        let moreItems: [ProductViewModel] = Array(productVM.productDisplayVM.count...nextItemIndexPage).map {
+        let moreItems: [ProductViewModel] = Array(productVM.productDisplayVM.count..<nextItemIndexPage).map {
             print("Index \($0)")
             return productVM.productVM[$0]
         }
