@@ -12,7 +12,6 @@ import SwiftUI
 @MainActor
 class ProductListViewModel: ObservableObject {
     
-    
     @Published var productDisplayVM: [ProductViewModel] = []
     
     var productVM: [ProductViewModel] = []
@@ -25,7 +24,8 @@ class ProductListViewModel: ObservableObject {
         do {
             let colorModels = try await colors
             self.productVM = try await products.map({ item in
-                ProductViewModel(productModel: item, colors: colorModels)
+                let color = colorModels.first(where: {$0.id == item.color})
+                return ProductViewModel(productModel: item, color: color?.name ?? "")
             })
             productDisplayVM = productVM.prefix(10).map{$0}
         } catch {
@@ -35,11 +35,11 @@ class ProductListViewModel: ObservableObject {
 }
 
 
-struct ProductViewModel{
+struct ProductViewModel {
     
     fileprivate var productModel: ProductModel
     
-    fileprivate var colors: [ColorModel]
+    fileprivate var color: String
     
     var id: Int {
         productModel.id ?? 0
@@ -62,9 +62,8 @@ struct ProductViewModel{
         productModel.image ?? ""
     }
     
-    var color: Color {
-        let color = colors.first(where: {$0.id == productModel.color})
-        return Color(name: color?.name ?? "") ?? Color.clear
+    var colorName: String {
+        return color
     }
     
 }
