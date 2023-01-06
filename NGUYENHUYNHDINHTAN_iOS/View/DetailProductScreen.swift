@@ -22,7 +22,7 @@ struct DetailProductScreen: View {
     @State private var isValidName: Bool = false
     @State private var isValidSku: Bool = false
     @State private var showingSheet = false
-    
+
     
     var body: some View {
         Form(content: {
@@ -47,7 +47,6 @@ struct DetailProductScreen: View {
                 await productListVM.getAllColor()
             }
         }.sheet(isPresented: $showingSheet) {
-        
             SheetColorView(colorListVM: productListVM.colorVM,productVM: $productVM)
         }
     }
@@ -61,7 +60,8 @@ struct SheetColorView: View {
     var body: some View {
         List(colorListVM, id: \.id) { item in
             Button(action: {
-                let color = colorListVM.first(where: {$0.name.lowercased() == productVM.colorName.lowercased()})
+                let color = colorListVM.first(where: {$0.name.lowercased() == item.name.lowercased()})
+                productVM.colorName = color?.name ?? ""
                 dismiss()
             }) {
                 Text(item.name).frame(maxWidth: .infinity)

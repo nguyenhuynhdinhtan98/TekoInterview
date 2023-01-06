@@ -10,7 +10,7 @@ import SwiftUI
 
 struct CustomTextField : View {
     
-    var hint: String = ""
+    @State var hint: String = ""
     
     @State var text: String = "" {
         didSet {

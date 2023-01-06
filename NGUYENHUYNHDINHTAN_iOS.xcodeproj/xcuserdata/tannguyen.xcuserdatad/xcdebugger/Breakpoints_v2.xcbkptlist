@@ -3,4 +3,114 @@
    uuid = "DD9ABC49-365F-49A9-BDA1-3864A045BE23"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7073E910-C703-4851-8246-E4B7D78CAF33"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NGUYENHUYNHDINHTAN_iOS/View/CustomView/CustomTextField.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "text"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "7073E910-C703-4851-8246-E4B7D78CAF33 - 15e3cbe602974543"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "property wrapper backing initializer of NGUYENHUYNHDINHTAN_iOS.CustomTextField.text : Swift.String"
+                  moduleName = "NGUYENHUYNHDINHTAN_iOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tannguyen/Downloads/NGUYENHUYNHDINHTAN_iOS/NGUYENHUYNHDINHTAN_iOS/View/CustomView/CustomTextField.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  uuid = "7073E910-C703-4851-8246-E4B7D78CAF33 - 4fa7a07338fecd67"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NGUYENHUYNHDINHTAN_iOS.CustomTextField.text.getter : Swift.String"
+                  moduleName = "NGUYENHUYNHDINHTAN_iOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tannguyen/Downloads/NGUYENHUYNHDINHTAN_iOS/NGUYENHUYNHDINHTAN_iOS/View/CustomView/CustomTextField.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "152">
+               </Location>
+               <Location
+                  uuid = "7073E910-C703-4851-8246-E4B7D78CAF33 - 3f4589d883343d4b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NGUYENHUYNHDINHTAN_iOS.CustomTextField.text.setter : Swift.String"
+                  moduleName = "NGUYENHUYNHDINHTAN_iOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tannguyen/Downloads/NGUYENHUYNHDINHTAN_iOS/NGUYENHUYNHDINHTAN_iOS/View/CustomView/CustomTextField.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "184">
+               </Location>
+               <Location
+                  uuid = "7073E910-C703-4851-8246-E4B7D78CAF33 - 47f082570e8c497e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NGUYENHUYNHDINHTAN_iOS.CustomTextField.text.modify : Swift.String"
+                  moduleName = "NGUYENHUYNHDINHTAN_iOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tannguyen/Downloads/NGUYENHUYNHDINHTAN_iOS/NGUYENHUYNHDINHTAN_iOS/View/CustomView/CustomTextField.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "7073E910-C703-4851-8246-E4B7D78CAF33 - bef5d3039e29b63e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NGUYENHUYNHDINHTAN_iOS.CustomTextField.text.modify : Swift.String with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "NGUYENHUYNHDINHTAN_iOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tannguyen/Downloads/NGUYENHUYNHDINHTAN_iOS/NGUYENHUYNHDINHTAN_iOS/View/CustomView/CustomTextField.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "7073E910-C703-4851-8246-E4B7D78CAF33 - bad11b1a59318251"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NGUYENHUYNHDINHTAN_iOS.CustomTextField.$text.getter : SwiftUI.Binding&lt;Swift.String&gt;"
+                  moduleName = "NGUYENHUYNHDINHTAN_iOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tannguyen/Downloads/NGUYENHUYNHDINHTAN_iOS/NGUYENHUYNHDINHTAN_iOS/View/CustomView/CustomTextField.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "176">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

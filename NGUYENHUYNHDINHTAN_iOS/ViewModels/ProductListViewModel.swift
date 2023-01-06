@@ -79,28 +79,33 @@ struct ProductViewModel {
     fileprivate var color: String
     
     var id: Int {
-        productModel.id ?? 0
+        get {return self.productModel.id ?? 0}
+        set {self.productModel.id = newValue}
     }
-    
-    var name: String {
-        productModel.name ?? ""
-    }
-    
-    var errorDescription: String {
-        productModel.errorDescription ?? ""
-    }
-    
-    var sku: String {
-        productModel.sku ?? ""
-    }
-    
-    var image: String {
-        productModel.image ?? ""
-    }
-    
-    var colorName: String {
-        return color
-    }
-    
 
+    var name: String {
+        get {return self.productModel.name ?? ""}
+        set {self.productModel.name = newValue}
+    }
+
+    var errorDescription: String {
+        get {return self.productModel.errorDescription ?? ""}
+        set {self.productModel.errorDescription = newValue}
+    }
+
+
+    var sku: String {
+        get {return self.productModel.sku ?? ""}
+        set {self.productModel.sku = newValue}
+    }
+
+    var image: String {
+        get {return self.productModel.image ?? ""}
+        set {self.productModel.image = newValue}
+    }
+
+    var colorName: String {
+        get {return self.color }
+        set {self.color = newValue}
+    }
 }
