@@ -14,53 +14,56 @@ class ProductListViewModel: ObservableObject {
     
     @Published var productVM: [ProductViewModel] = []
     @Published var productDisplayVM: [ProductViewModel] = []
-    private var color: [ColorModel] = []
+    var colorsModels: [ColorModel] = []
     
     func getAllProduct() async {
+        async let colors = try await Webservice().getAllColors(url: Constants.Urls.urlColors)
+        
+        async let products = try await Webservice().getAllProducts(url: Constants.Urls.urlProducts)
+        
         do {
-            self.color = try await Webservice().getAllProducts(url: Constants.Urls.urlProducts)
-            let products = try await Webservice().getAllProducts(url: Constants.Urls.urlProducts)
-            self.productVM = products.map(ProductViewModel.init)
+            self.colorsModels = try await colors
+            self.productVM = try await products.map({ item in
+                ProductViewModel(productModel: item, colors: colorsModels)
+            })
             self.productDisplayVM = productVM
         } catch {
             print(error)
         }
     }
-    
-    func getAllColor() async -> [ColorModel] {
-        return try await Webservice().getAllColors(url: Constants.Urls.urlColors)
-    }
-    
 }
-
 
 
 struct ProductViewModel {
     
-    fileprivate var product: ProductModel
+    fileprivate var productModel: ProductModel
+    
+    fileprivate var colors: [ColorModel]
     
     var id: Int {
-        product.id ?? 0
+        productModel.id ?? 0
     }
     
     var name: String {
-        product.name ?? ""
+        productModel.name ?? ""
     }
     
     var errorDescription: String {
-        product.errorDescription ?? ""
+        productModel.errorDescription ?? ""
     }
     
     
     var sku: String {
-        product.sku ?? ""
+        productModel.sku ?? ""
     }
     
     var image: String {
-        product.image ?? ""
+        productModel.image ?? ""
     }
     
-    var color: Int {
-        product.color ?? 0
+    var color: Color {
+        let color = colors.first(where: {$0.id == productModel.color})
+        return Color(name: color?.name ?? "") ?? Color.clear
     }
+    
 }

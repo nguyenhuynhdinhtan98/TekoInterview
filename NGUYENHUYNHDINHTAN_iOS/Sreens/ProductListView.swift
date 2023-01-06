@@ -15,7 +15,7 @@ struct ProductListView: View {
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
-                List(productVM.productVM, id: \.id) { product in
+                List(productVM.productDisplayVM, id: \.id) { product in
                     ProductItemView(product: product)
                 }
                 .task {
@@ -45,7 +45,10 @@ struct ProductItemView: View {
                 Text(product.name).padding(4)
                 Text(product.errorDescription).padding(4)
                 Text(product.sku).padding(4)
-                //                Text(product.color).padding(4)
+                Rectangle()
+                    .fill(product.color)
+                    .frame(width: 30, height: 30).padding(4)
+                Image(systemName: "square.and.pencil") .font(.system(size: 30.0, weight: .bold)).foregroundColor(.red)
             }
         }
         .padding(5)
