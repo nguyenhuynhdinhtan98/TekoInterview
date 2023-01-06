@@ -1,8 +1,8 @@
 //
-//  Extension.swift
+//  Color+Extensions.swift
 //  NGUYENHUYNHDINHTAN_iOS
 //
-//  Created by Tân Nguyễn on 05/01/2023.
+//  Created by Tân Nguyễn on 06/01/2023.
 //
 
 import Foundation

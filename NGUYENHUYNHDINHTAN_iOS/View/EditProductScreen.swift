@@ -9,37 +9,49 @@ import Foundation
 import SwiftUI
 
 struct DetailProductScreen: View {
+    
     let productVM: ProductViewModel
+    
+    @StateObject private var productListVM: ProductListViewModel = ProductListViewModel()
     @Environment(\.presentationMode) var presentationMode
     
+    @State private var isValidName: Bool = false
+    @State private var isValidSku: Bool = false
+    @State private var showingSheet = false
     
     var body: some View {
         Form(content: {
-            Text("EDIT TEXT FIELDS:")
+            CustomTextField(hint: "Enter name",text: productVM.name, characterLimit: 50, typeErrorMessage: .maxLengthName , isValid: $isValidName)
             
-//            TextField("Enter name", text: productVM.name)
-            //            TextField("Enter director", text: "")
-            //            HStack {
-            //                Text("Rating")
-            //                Spacer()
-            //                RatingView(rating: $productVM.rating)
-            //            }
-            //            DatePicker("Release Date", selection: $productVM.releaseDate)
+            CustomTextField(hint: "Enter sku", text: productVM.sku, characterLimit: 20, typeErrorMessage: .maxLengthSKU , isValid: $isValidSku)
             
+            Button("Color \(productVM.colorName.isEmpty ? "Clear" : productVM.colorName )") {
+                showingSheet = true
+            }
             HStack {
-                
                 Spacer()
                 Button("Save") {
-                    presentationMode.wrappedValue.dismiss()
+                    if isValidSku && isValidName {
+                        presentationMode.wrappedValue.dismiss()
+                    }
                 }
                 Spacer()
             }
-        })
+        }).sheet(isPresented: $showingSheet) {
+            SheetColorView()
+        }
     }
 }
 
-//struct DetailProductScreen_Previews: PreviewProvider {
-//    static var previews: some View {
-//        DetailProductScreen(productVM: ProductViewModel(productModel: ProductModel(id: 1,name: "Laptop Dell Inspiron 13 5301" ,errorDescription: "Product error 101", sku: "210400693",image: "https://lh3.googleusercontent.com/C9h0wTjyE87-02b7RdbwpZvcLJwRDXoZBCtKXtwhB3TcAbffp7RQSHbihoEzf06PpgVp5peewwR-829KY7oMgoBuqxuKj7N-hw=w500-rw", color: 2), color: "Blue"))
-//    }
-//}
+struct SheetColorView: View {
+    @Environment(\.dismiss) var dismiss
+    
+    var body: some View {
+        Button("Press to dismiss") {
+            dismiss()
+        }
+        .font(.title)
+        .padding()
+        .background(.black)
+    }
+}

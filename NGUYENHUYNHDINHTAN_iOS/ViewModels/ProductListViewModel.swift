@@ -12,29 +12,61 @@ import SwiftUI
 @MainActor
 class ProductListViewModel: ObservableObject {
     
-    @Published var productDisplayVM: [ProductViewModel] = []
+    @Published var productDisplayListVM: [ProductViewModel] = []
     
-    var productVM: [ProductViewModel] = []
+    @Published var productListVM: [ProductViewModel] = []
 
+    @Published var colorVM: [ColorViewModel] = []
+    
     func getAllProduct() async {
         async let colors = try await Webservice().getAllColors(url: Constants.Urls.urlColors)
         
         async let products = try await Webservice().getAllProducts(url: Constants.Urls.urlProducts)
         
         do {
-            let colorModels = try await colors
-            self.productVM = try await products.map({ item in
-                let color = colorModels.first(where: {$0.id == item.color})
+            self.colorVM = try await colors.map(ColorViewModel.init)
+            
+            self.productListVM = try await products.map({ item in
+                let color = colorVM.first(where: {$0.id == item.color})
                 return ProductViewModel(productModel: item, color: color?.name ?? "")
             })
-            productDisplayVM = productVM.prefix(10).map{$0}
+            
+            productDisplayListVM = productListVM.prefix(10).map{$0}
         } catch {
+            
             print(error)
+            
+        }
+    }
+    
+    func getAllColor() async {
+      
+        do {
+            let colors =  try await Webservice().getAllColors(url: Constants.Urls.urlColors)
+            
+            self.colorVM =  colors.map(ColorViewModel.init)
+
+        } catch {
+            
+            print(error)
+            
         }
     }
 }
 
-
+struct ColorViewModel {
+    
+    fileprivate var color: ColorModel
+    
+    var id: Int {
+        color.id ?? 0
+    }
+    
+    var name: String {
+        color.name ?? ""
+    }
+    
+}
 struct ProductViewModel {
     
     fileprivate var productModel: ProductModel
@@ -53,7 +85,6 @@ struct ProductViewModel {
         productModel.errorDescription ?? ""
     }
     
-    
     var sku: String {
         productModel.sku ?? ""
     }
@@ -66,4 +97,35 @@ struct ProductViewModel {
         return color
     }
     
+    
+//    var id: Int {
+//        get {return self.productModel.id ?? 0}
+//        set {self.productModel.id = newValue}
+//    }
+//
+//    var name: String {
+//        get {return self.productModel.name ?? ""}
+//        set {self.productModel.name = newValue}
+//    }
+//
+//    var errorDescription: String {
+//        get {return self.productModel.errorDescription ?? ""}
+//        set {self.productModel.errorDescription = newValue}
+//    }
+//
+//
+//    var sku: String {
+//        get {return self.productModel.sku ?? ""}
+//        set {self.productModel.sku = newValue}
+//    }
+//
+//    var image: String {
+//        get {return self.productModel.image ?? ""}
+//        set {self.productModel.image = newValue}
+//    }
+//
+//    var colorName: String {
+//        get {return self.color }
+//        set {self.color = newValue}
+//    }
 }

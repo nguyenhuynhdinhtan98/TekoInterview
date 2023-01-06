@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct ProductModel: Decodable {
+struct ProductModel: Codable {
     var id: Int?
     var name: String?
     var errorDescription: String?

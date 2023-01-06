@@ -16,7 +16,11 @@
 		C20A4DD62966A0CF00FF360B /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20A4DD52966A0CF00FF360B /* WebService.swift */; };
 		C20A4DDA2966A84900FF360B /* ProductListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20A4DD92966A84900FF360B /* ProductListViewModel.swift */; };
 		C21A0313296723E6007008D4 /* ColorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21A0312296723E6007008D4 /* ColorModel.swift */; };
-		C21A031529672846007008D4 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21A031429672846007008D4 /* Extension.swift */; };
+		C22E2A4C2968737B008C9191 /* ProductItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22E2A4B2968737B008C9191 /* ProductItemView.swift */; };
+		C22E2A4E2968740C008C9191 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22E2A4D2968740C008C9191 /* CustomTextField.swift */; };
+		C22E2A512968744E008C9191 /* TextFieldFail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22E2A502968744E008C9191 /* TextFieldFail.swift */; };
+		C22E2A562968754D008C9191 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22E2A552968754D008C9191 /* String+Extensions.swift */; };
+		C22E2A582968758D008C9191 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22E2A572968758D008C9191 /* Color+Extensions.swift */; };
 		C265EF7129682F23004E905F /* EditProductScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C265EF7029682F22004E905F /* EditProductScreen.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,7 +36,11 @@
 		C20A4DD52966A0CF00FF360B /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		C20A4DD92966A84900FF360B /* ProductListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListViewModel.swift; sourceTree = "<group>"; };
 		C21A0312296723E6007008D4 /* ColorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorModel.swift; sourceTree = "<group>"; };
-		C21A031429672846007008D4 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		C22E2A4B2968737B008C9191 /* ProductItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItemView.swift; sourceTree = "<group>"; };
+		C22E2A4D2968740C008C9191 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		C22E2A502968744E008C9191 /* TextFieldFail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldFail.swift; sourceTree = "<group>"; };
+		C22E2A552968754D008C9191 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		C22E2A572968758D008C9191 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		C265EF7029682F22004E905F /* EditProductScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProductScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,6 +74,7 @@
 		C20A4DBE29669EAC00FF360B /* NGUYENHUYNHDINHTAN_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				C22E2A5429687544008C9191 /* Extensions */,
 				C20A4DD72966A11E00FF360B /* Models */,
 				C20A4DD82966A2BD00FF360B /* ViewModels */,
 				C20A4DD229669FB400FF360B /* Utils */,
@@ -90,6 +99,8 @@
 		C20A4DD029669F3C00FF360B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C22E2A4F29687412008C9191 /* CustomView */,
+				C22E2A4A29687367008C9191 /* CustomCell */,
 				C20A4DC129669EAD00FF360B /* ProductListView.swift */,
 				C265EF7029682F22004E905F /* EditProductScreen.swift */,
 			);
@@ -108,7 +119,6 @@
 			isa = PBXGroup;
 			children = (
 				C20A4DD329669FBD00FF360B /* Constants.swift */,
-				C21A031429672846007008D4 /* Extension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -128,6 +138,32 @@
 				C20A4DD92966A84900FF360B /* ProductListViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		C22E2A4A29687367008C9191 /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				C22E2A4B2968737B008C9191 /* ProductItemView.swift */,
+			);
+			path = CustomCell;
+			sourceTree = "<group>";
+		};
+		C22E2A4F29687412008C9191 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				C22E2A4D2968740C008C9191 /* CustomTextField.swift */,
+				C22E2A502968744E008C9191 /* TextFieldFail.swift */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
+		C22E2A5429687544008C9191 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C22E2A552968754D008C9191 /* String+Extensions.swift */,
+				C22E2A572968758D008C9191 /* Color+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,14 +237,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				C20A4DC229669EAD00FF360B /* ProductListView.swift in Sources */,
+				C22E2A562968754D008C9191 /* String+Extensions.swift in Sources */,
 				C265EF7129682F23004E905F /* EditProductScreen.swift in Sources */,
 				C21A0313296723E6007008D4 /* ColorModel.swift in Sources */,
 				C20A4DCF29669EC600FF360B /* ProductModel.swift in Sources */,
 				C20A4DDA2966A84900FF360B /* ProductListViewModel.swift in Sources */,
+				C22E2A4C2968737B008C9191 /* ProductItemView.swift in Sources */,
+				C22E2A4E2968740C008C9191 /* CustomTextField.swift in Sources */,
 				C20A4DC029669EAD00FF360B /* NGUYENHUYNHDINHTAN_iOSApp.swift in Sources */,
 				C20A4DD62966A0CF00FF360B /* WebService.swift in Sources */,
+				C22E2A512968744E008C9191 /* TextFieldFail.swift in Sources */,
+				C22E2A582968758D008C9191 /* Color+Extensions.swift in Sources */,
 				C20A4DD429669FBD00FF360B /* Constants.swift in Sources */,
-				C21A031529672846007008D4 /* Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
