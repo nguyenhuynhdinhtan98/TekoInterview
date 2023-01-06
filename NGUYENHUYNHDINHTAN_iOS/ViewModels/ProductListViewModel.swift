@@ -8,7 +8,6 @@
 import Foundation
 import SwiftUI
 
-
 @MainActor
 class ProductListViewModel: ObservableObject {
     
@@ -31,7 +30,7 @@ class ProductListViewModel: ObservableObject {
                 return ProductViewModel(productModel: item, color: color?.name ?? "")
             })
             
-            productDisplayListVM = productListVM.prefix(10).map{$0}
+            self.productDisplayListVM = productListVM.prefix(10).map{$0}
         } catch {
             
             print(error)
@@ -52,6 +51,12 @@ class ProductListViewModel: ObservableObject {
             
         }
     }
+    
+    
+    func getColorByName(colorName: String) -> ColorViewModel {
+        return colorVM.first(where: {$0.name.lowercased() == colorName.lowercased()}) ?? ColorViewModel(color: ColorModel(id: 0, name: "Clear"))
+    }
+    
 }
 
 struct ColorViewModel {
@@ -97,35 +102,5 @@ struct ProductViewModel {
         return color
     }
     
-    
-//    var id: Int {
-//        get {return self.productModel.id ?? 0}
-//        set {self.productModel.id = newValue}
-//    }
-//
-//    var name: String {
-//        get {return self.productModel.name ?? ""}
-//        set {self.productModel.name = newValue}
-//    }
-//
-//    var errorDescription: String {
-//        get {return self.productModel.errorDescription ?? ""}
-//        set {self.productModel.errorDescription = newValue}
-//    }
-//
-//
-//    var sku: String {
-//        get {return self.productModel.sku ?? ""}
-//        set {self.productModel.sku = newValue}
-//    }
-//
-//    var image: String {
-//        get {return self.productModel.image ?? ""}
-//        set {self.productModel.image = newValue}
-//    }
-//
-//    var colorName: String {
-//        get {return self.color }
-//        set {self.color = newValue}
-//    }
+
 }

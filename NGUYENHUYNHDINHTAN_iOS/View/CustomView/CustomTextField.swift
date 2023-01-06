@@ -27,7 +27,9 @@ struct CustomTextField : View {
     
     var body: some View {
         return VStack {
-            TextField(hint, text: $text)
+            TextField(hint, text: $text, onEditingChanged: { isChange in
+                text = text
+            })
                 .onChange(of: text, perform: { newValue in
                     self.text = newValue
                 })

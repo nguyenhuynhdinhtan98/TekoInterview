@@ -21,7 +21,7 @@
 		C22E2A512968744E008C9191 /* TextFieldFail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22E2A502968744E008C9191 /* TextFieldFail.swift */; };
 		C22E2A562968754D008C9191 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22E2A552968754D008C9191 /* String+Extensions.swift */; };
 		C22E2A582968758D008C9191 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22E2A572968758D008C9191 /* Color+Extensions.swift */; };
-		C265EF7129682F23004E905F /* EditProductScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C265EF7029682F22004E905F /* EditProductScreen.swift */; };
+		C265EF7129682F23004E905F /* DetailProductScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C265EF7029682F22004E905F /* DetailProductScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,7 +41,7 @@
 		C22E2A502968744E008C9191 /* TextFieldFail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldFail.swift; sourceTree = "<group>"; };
 		C22E2A552968754D008C9191 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		C22E2A572968758D008C9191 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
-		C265EF7029682F22004E905F /* EditProductScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProductScreen.swift; sourceTree = "<group>"; };
+		C265EF7029682F22004E905F /* DetailProductScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProductScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,7 +102,7 @@
 				C22E2A4F29687412008C9191 /* CustomView */,
 				C22E2A4A29687367008C9191 /* CustomCell */,
 				C20A4DC129669EAD00FF360B /* ProductListView.swift */,
-				C265EF7029682F22004E905F /* EditProductScreen.swift */,
+				C265EF7029682F22004E905F /* DetailProductScreen.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -238,7 +238,7 @@
 			files = (
 				C20A4DC229669EAD00FF360B /* ProductListView.swift in Sources */,
 				C22E2A562968754D008C9191 /* String+Extensions.swift in Sources */,
-				C265EF7129682F23004E905F /* EditProductScreen.swift in Sources */,
+				C265EF7129682F23004E905F /* DetailProductScreen.swift in Sources */,
 				C21A0313296723E6007008D4 /* ColorModel.swift in Sources */,
 				C20A4DCF29669EC600FF360B /* ProductModel.swift in Sources */,
 				C20A4DDA2966A84900FF360B /* ProductListViewModel.swift in Sources */,
