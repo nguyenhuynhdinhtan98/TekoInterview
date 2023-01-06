@@ -18,17 +18,17 @@ struct ProductListView: View {
             VStack(alignment: .leading) {
                 List(productVM.productDisplayVM, id: \.id) { product in
                     ProductItemView(product: product).onAppear {
-                        if product.id == productVM.productDisplayVM.last?.id {
+                        if product.id == productVM.productDisplayVM.last?.id && product.id != productVM.productVM.last?.id && !isLoading  {
                             loadNextPage(product)
                         }
-                    }
-                    if self.isLoading && product.id == productVM.productDisplayVM.last?.id && product.id != productVM.productVM.last?.id   {
-                        Text("Loading ...")
-                            .padding(.vertical)
                     }
                 }
                 .task {
                     await productVM.getAllProduct()
+                }
+                if self.isLoading {
+                    ProgressView().background(.clear)
+                        .padding(.vertical).frame(maxWidth: .infinity,maxHeight: 50,alignment: .center)
                 }
             }
             .navigationBarTitle(Text("Product")).toolbar {
